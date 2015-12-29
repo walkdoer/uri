@@ -1,6 +1,6 @@
 # uri
 
-simple uri manipulate function
+Simple uri manipulation tool
 
 
 ## Example
@@ -48,3 +48,28 @@ u.path('/new/path'); // http://example.com/new/path
 
 ```
 
+### 生成路径
+
+```
+var u = uri("http://example.com");
+u.path('/new/path').params({"name": "alex"});
+u.str() //http://example.com/new/path?name=alex
+```
+
+
+### 全局配置
+
+通过配置params, 可以让每个连接都带上这些配置好的全局参数
+
+```
+uri.config({
+    params: {
+        "company": "ex"
+    }
+});
+
+
+var u = uri("http://example.com");
+u.str(); //http://example.com?company=ex;
+
+```
