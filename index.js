@@ -13,7 +13,6 @@ let u = new Uri();
 $('.current').innerText = u.str();
 
 
-debugger;
 var up = new Uri("http://example.com/user?name=jams&age=10");
 //Add Params
 up.params({

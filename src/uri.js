@@ -39,18 +39,15 @@ export default class Uri {
     }
 
     constructor(str) {
-        this.propArr = ['protocol', 'host', 'pathname']
+        this.propArr = ['protocol', 'host', 'pathname', 'query', 'port']
         if (!str) {
-            this.propArr.forEach((prop) =>{
-                this[prop] = location[prop];
-            });
-        } else {
-            let result = parseUri(str);
-            this.propArr.forEach((prop) => {
-                this[prop] = result[prop];
-            });
+            str = location.href;
         }
-        this._params = {};
+        let result = parseUri(str);
+        this.propArr.forEach((prop) => {
+            this[prop] = result[prop];
+        });
+        this._params = parseQuery(this.query);
         return this;
     }
 
@@ -74,7 +71,7 @@ export default class Uri {
     }
 
     str() {
-        var uri = `${this.protocol}//${this.host}${this.pathname}`;
+        var uri = `${this.protocol}://${this.host}${this.pathname}`;
         uri = addParams(uri, Object.assign({}, globalParams, this._params));
         return uri;
     }
@@ -115,6 +112,17 @@ function addParams(uri, params) {
         uri += '?';
     }
     return (uri + paramStr).replace('?&', '?').replace(/\?$/, '');
+}
+
+function parseQuery(query='') {
+    let res = {};
+    query.split('&')
+        .filter((val) => (!!val))
+        .forEach((kvStr) => {
+            let [key, value] = kvStr.split('=');
+            res[key] = value;
+        });
+    return res;
 }
 
 
