@@ -4,6 +4,13 @@ function $(sel) {
     return document.querySelector(sel);
 }
 
+debugger
+Uri.config({
+    params: {
+        "gvar": "test"
+    }
+});
+
 let u = new Uri();
 
 

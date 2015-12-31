@@ -34,8 +34,8 @@ parseUri.options = {
 };
 
 export default class Uri {
-    static config() {
-        globalParams = global.params || {};
+    static config(options) {
+        globalParams = options.params || {};
     }
 
     constructor(str) {
@@ -71,7 +71,7 @@ export default class Uri {
     }
 
     str() {
-        var uri = `${this.protocol}://${this.host}${this.pathname}`;
+        var uri = `${this.protocol}://${this.host}${this.port ? ':' + this.port : ''}${this.pathname}`;
         uri = addParams(uri, Object.assign({}, globalParams, this._params));
         return uri;
     }
