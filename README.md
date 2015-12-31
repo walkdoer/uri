@@ -3,13 +3,25 @@
 Simple uri manipulation tool
 
 
-## Example
 
+### Uri(string uri)
 
-### 创建一个uri
+创建一个Uri
 
 ```
-var u = uri("http://example.com?name=alex&age=10");
+var u = new Uri("http://example.com?name=alex&age=10");
+u.protocol // http
+u.host // example.com
+```
+
+如果不传入uri参数，则以当前的访问路径为准，例如我在浏览器中的访问路径为 `https://google.com/search`
+
+```
+var u = new Uri();
+u.str(); // `https://google.com/search`
+u.pathname // /search
+u.protocol // https
+u.host // google.com
 ```
 
 ### 获取参数

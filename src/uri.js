@@ -1,8 +1,37 @@
 /**
  * Uri manipulation tool
  */
-'use strict';
-var globalParams = {};
+
+let globalParams = {};
+
+function parseUri (str) {
+    var o   = parseUri.options,
+        m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+        uri = {},
+        i   = 14;
+
+    while (i--) uri[o.key[i]] = m[i] || "";
+
+    uri[o.q.name] = {};
+    uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
+        if ($1) uri[o.q.name][$1] = $2;
+    });
+
+    return uri;
+};
+
+parseUri.options = {
+    strictMode: false,
+    key: ["source","protocol","authority","userInfo","user","password","host","port","relative","pathname","directory","file","query","anchor"],
+    q:   {
+        name:   "queryKey",
+        parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+    },
+    parser: {
+        strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+        loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
+    }
+};
 
 export default class Uri {
     static config() {
@@ -10,11 +39,19 @@ export default class Uri {
     }
 
     constructor(str) {
-        this._uri = str || location.origin;
+        this.propArr = ['protocol', 'host', 'pathname']
         if (!str) {
-            this._path = location.pathname;
+            this.propArr.forEach((prop) =>{
+                this[prop] = location[prop];
+            });
+        } else {
+            let result = parseUri(str);
+            this.propArr.forEach((prop) => {
+                this[prop] = result[prop];
+            });
         }
         this._params = {};
+        return this;
     }
 
     path(pathStr) {
@@ -24,10 +61,10 @@ export default class Uri {
         let isAbsolute = isAbsolutePath(pathStr);
         let arr = pathStr.split('/');
         if (!isAbsolute) {
-            arr = this._path.split('/').concat(arr);
+            arr = this.pathname.split('/').concat(arr);
         }
         let newPath = normalizePathArray(arr, !isAbsolute);
-        this._path = '/' + newPath.join('/');
+        this.pathname = '/' + newPath.join('/');
         return this;
     }
 
@@ -37,7 +74,7 @@ export default class Uri {
     }
 
     str() {
-        var uri = this._uri + this._path;
+        var uri = `${this.protocol}//${this.host}${this.pathname}`;
         uri = addParams(uri, Object.assign({}, globalParams, this._params));
         return uri;
     }
