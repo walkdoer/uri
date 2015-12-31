@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Uri</title>
+</head>
+<body>
+    <div class="example">
+        <div>
+        <h3>current</h3>
+        <pre><code>
+            var u = new Uri();
+            u.str();
+        </code></pre>
+        结果： <p class="current"></p>
+        <h3>add params</h3>
+        <pre><code>
+            u.params({
+                id: 12321,
+                name: "alex"
+            });
+            u.str();
+        </code></pre>
+        结果： <p class="addParams"></p>
+    </div>
+    <script type="text/javascript" src="bundle.js"></script>
+</body>
+</html>
