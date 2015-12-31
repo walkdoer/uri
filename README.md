@@ -35,6 +35,7 @@ u.str(); // https://google.com/search
 var u = new Uri("http://example.com?name=alex");
 u.params({'name': 'mary'}).str() //http://example.com?name=mary
 u.params({ 'email': 'test@example.com', 'sex': 'female' }).str(); // http://example.com?name=mary&email=test@example.com&sex=female
+```
 
 
 ### path(String pathname)
@@ -48,10 +49,16 @@ u.path('../test').str();   // http://example.com/new/test
 
 ```
 
+### str()
 
-### 全局配置
+生成uri字符串
 
-通过配置params, 可以让每个连接都带上这些配置好的全局参数
+
+### Uri.config(Object options) `static`
+
+全局配置
+
+通过配置`params`, 可以让每个连接都带上这些配置好的全局参数
 
 ```
 Uri.config({
