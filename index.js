@@ -22,3 +22,25 @@ u.params({
 $('.addParams').innerText = u.str();
 
 
+let u1 = new Uri();
+
+u1.path("a/b");
+$('.path1').innerText = u1.str();
+
+
+u1.path("/c/d");
+
+$('.path2').innerText = u1.str();
+
+
+let u2 = new Uri();
+u2.path("../a");
+u2.str();
+
+$('.path3').innerText = u2.str();
+
+
+let u3 = new Uri("http://example.com/api");
+u3.path("/user").params({id: 1323, name: "alex"});
+u3.str();
+$('.params_path').innerText = u3.str();

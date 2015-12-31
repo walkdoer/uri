@@ -4,17 +4,33 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Uri</title>
+    <style type="text/css">
+    .result {
+        background: #D2FFE3;
+        border-radius: 10px;
+        border: 1px solid #9EC7AF;
+        padding: 10px;
+        white-space:nowrap;
+    }
+
+    pre {
+        background: #E8E8E8;
+        border: 1px solid #CCC;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    </style>
 </head>
 <body>
     <div class="example">
         <div>
-        <h3>current</h3>
+        <h3>Str()</h3>
         <pre><code>
             var u = new Uri();
             u.str();
         </code></pre>
-        结果： <p class="current"></p>
-        <h3>add params</h3>
+        <span class="result current"></span>
+        <h3>params()</h3>
         <pre><code>
             u.params({
                 id: 12321,
@@ -22,8 +38,42 @@
             });
             u.str();
         </code></pre>
-        结果： <p class="addParams"></p>
+        <span class="result addParams"></span>
+
+        <h3>path()</h3>
+        <pre><code>
+            let u = new Uri();
+            u.path("a/b");
+            u.str();
+        </code></pre>
+        <span class="result path1"></span>
+        <pre><code>
+            let u = new Uri();
+            u1.path("a/b")
+              .path("/c/d");
+            u.str();
+        </code></pre>
+        <span class="result path2"></span>
+
+        <pre><code>
+            let u = new Uri();
+            u.path("../a");
+            u.str();
+        </code></pre>
+        <span class="result path3"></span>
+
+
+        <h3>params + path</h3>
+         <pre><code>
+            let u = new Uri("http://example.com/api");
+            u.path("/user").params({id: 1323, name: "alex"});
+            u.str();
+        </code></pre>
+        <span class="result params_path"></span>
     </div>
-    <script type="text/javascript" src="bundle.js"></script>
+
+
+
+    <script type="text/javascript" src="/bundle.js"></script>
 </body>
 </html>

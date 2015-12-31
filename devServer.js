@@ -1,3 +1,4 @@
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
@@ -16,8 +17,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 app.use('/', express.static(path.join(__dirname, './')));
 
-app.use('*', function () {
-    res.send('./index.html');
+app.use('/*', function (req, res) {
+    res.type('html').send(fs.readFileSync(path.resolve(__dirname, "./index.html")));
 });
 
 app.listen(5000, 'localhost', function(err) {
