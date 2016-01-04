@@ -1,6 +1,6 @@
 {
   "name": "simple-uri",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "simple uri manipulation tool",
   "main": "build/uri.js",
   "keywords": ["uri", "url", "href"],

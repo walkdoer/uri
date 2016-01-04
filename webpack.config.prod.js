@@ -10,7 +10,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'uri.js',
-        publicPath: '/build/'
+        publicPath: '/build/',
+        libraryTarget: 'umd'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
