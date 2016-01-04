@@ -71,3 +71,8 @@ var u = new Uri("http://example.com");
 u.str(); //http://example.com?company=ex;
 
 ```
+
+
+## Release
+
+- 0.1.0  `2016-01-04 14:54:46`  initial version
