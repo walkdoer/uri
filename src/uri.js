@@ -36,7 +36,7 @@ parseUri.options = {
     }
 };
 
-export default class Uri {
+module.exports = class Uri {
     static config(options) {
         globalParams = options.params || {};
     }
