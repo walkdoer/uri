@@ -75,4 +75,6 @@ u.str(); //http://example.com?company=ex;
 
 ## Release
 
-- 0.1.0  `2016-01-04 14:54:46`  initial version
+- 0.1.2  `2016-01-04`  bugfix import problem
+- 0.1.1  `2016-01-04`  umd
+- 0.1.0  `2016-01-04`  initial version
