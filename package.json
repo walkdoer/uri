@@ -1,9 +1,13 @@
 {
   "name": "simple-uri",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "simple uri manipulation tool",
   "main": "build/uri.js",
-  "keywords": ["uri", "url", "href"],
+  "keywords": [
+    "uri",
+    "url",
+    "href"
+  ],
   "url": "https://github.com/zhangmhao/uri",
   "homepage": "https://github.com/zhangmhao/uri",
   "repository": {
