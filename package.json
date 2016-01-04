@@ -4,6 +4,12 @@
   "description": "simple uri manipulation tool",
   "main": "build/uri.js",
   "keywords": ["uri", "url", "href"],
+  "url": "https://github.com/zhangmhao/uri",
+  "homepage": "https://github.com/zhangmhao/uri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangmhao/uri.git"
+  },
   "scripts": {
     "clean": "rimraf build",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
