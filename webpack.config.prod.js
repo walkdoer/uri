@@ -11,7 +11,7 @@ module.exports = {
         path: path.join(__dirname, 'build'),
         filename: 'uri.js',
         publicPath: '/build/',
-        libraryTarget: 'umd'
+        libraryTarget: 'commonjs2'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
@@ -32,7 +32,7 @@ module.exports = {
             exclude: /(node_modules|bower_components)/,
             loader: 'babel',
             query: {
-                presets: ['es2015', "stage-0", 'react']
+                presets: ['es2015', "stage-0"]
             }
         }]
     },
