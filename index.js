@@ -4,12 +4,6 @@ function $(sel) {
     return document.querySelector(sel);
 }
 
-debugger
-Uri.config({
-    params: {
-        "gvar": "test"
-    }
-});
 
 let u = new Uri();
 
@@ -53,3 +47,18 @@ u3.path("/user").params({id: 1323, name: "alex"});
 u3.str();
 $('.params_path').innerText = u3.str();
 console.log(u3);
+
+
+//Config global params
+Uri.config({
+    params: {
+        "bar": "te",
+        "foo": "st"
+    }
+});
+var u4 = new Uri("http://example.com");
+u4.str();
+$('.params_global').innerText = u4.str();
+
+
+

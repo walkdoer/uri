@@ -4,6 +4,7 @@
 
 let globalParams = {};
 
+/** uri parser */
 function parseUri (str) {
     var o   = parseUri.options,
         m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
@@ -20,9 +21,11 @@ function parseUri (str) {
     return uri;
 };
 
+var propArr = ["source","protocol","authority","userInfo","user","password","host","port","relative","pathname","directory","file","query","anchor"];
+
 parseUri.options = {
     strictMode: false,
-    key: ["source","protocol","authority","userInfo","user","password","host","port","relative","pathname","directory","file","query","anchor"],
+    key: propArr,
     q:   {
         name:   "queryKey",
         parser: /(?:^|&)([^&=]*)=?([^&]*)/g
@@ -39,12 +42,11 @@ export default class Uri {
     }
 
     constructor(str) {
-        this.propArr = ['protocol', 'host', 'pathname', 'query', 'port']
         if (!str) {
-            str = location.href;
+            str = location ? location.href  : '';
         }
         let result = parseUri(str);
-        this.propArr.forEach((prop) => {
+        propArr.forEach((prop) => {
             this[prop] = result[prop];
         });
         this._params = parseQuery(this.query);

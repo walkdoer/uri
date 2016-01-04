@@ -72,6 +72,20 @@
             u.str();
         </code></pre>
         <span class="result params_path"></span>
+
+
+        <h3>params + path</h3>
+        <pre><code>
+        Uri.config({
+            params: {
+                "bar": "te",
+                "foo": "st"
+            }
+        });
+        let u = new Uri("http://example.com");
+        u.str();
+        </code></pre>
+        <span class="result params_global"></span>
     </div>
 
 
