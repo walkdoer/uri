@@ -49,7 +49,7 @@ module.exports = class Uri {
         propArr.forEach((prop) => {
             this[prop] = result[prop];
         });
-        this._params = parseQuery(this.query);
+        this.params = parseQuery(this.query);
         return this;
     }
 
@@ -67,14 +67,14 @@ module.exports = class Uri {
         return this;
     }
 
-    params(obj) {
-        Object.assign(this._params, obj);
+    setParams(obj) {
+        Object.assign(this.params, obj);
         return this;
     }
 
     str() {
         var uri = `${this.protocol}://${this.host}${this.port ? ':' + this.port : ''}${this.pathname}`;
-        uri = addParams(uri, Object.assign({}, globalParams, this._params));
+        uri = addParams(uri, Object.assign({}, globalParams, this.params));
         return uri;
     }
 }

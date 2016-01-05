@@ -16,7 +16,7 @@ $('.current').innerText = u.str();
 
 var up = new Uri("http://example.com/user?name=jams&age=10");
 //Add Params
-up.params({
+up.setParams({
     id: 12321,
     name: "alex"
 });
@@ -43,7 +43,7 @@ $('.path3').innerText = u2.str();
 
 
 let u3 = new Uri("http://example.com/api");
-u3.path("/user").params({id: 1323, name: "alex"});
+u3.path("/user").setParams({id: 1323, name: "alex"});
 u3.str();
 $('.params_path').innerText = u3.str();
 console.log(u3);
