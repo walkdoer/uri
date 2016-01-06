@@ -27,14 +27,14 @@ u.str(); // https://google.com/search
 
 ## Methods 方法
 
-### params(Object obj)
+### setParams(Object obj)
 
 设置参数
 
 ```
 var u = new Uri("http://example.com?name=alex");
-u.params({'name': 'mary'}).str() //http://example.com?name=mary
-u.params({ 'email': 'test@example.com', 'sex': 'female' }).str(); // http://example.com?name=mary&email=test@example.com&sex=female
+u.setParams({'name': 'mary'}).str() //http://example.com?name=mary
+u.setParams({ 'email': 'test@example.com', 'sex': 'female' }).str(); // http://example.com?name=mary&email=test@example.com&sex=female
 ```
 
 
@@ -75,6 +75,9 @@ u.str(); //http://example.com?company=ex;
 
 ## Release
 
+- 0.1.5  `2016-01-06` remove extend dependency and update document.
+- 0.1.4  `2016-01-05` 1. change api `params` to `setParams` 2. params use to get query params;
+- 0.1.3  `2016-01-04`  bugfix module problem
 - 0.1.2  `2016-01-04`  bugfix import problem
 - 0.1.1  `2016-01-04`  umd
 - 0.1.0  `2016-01-04`  initial version
