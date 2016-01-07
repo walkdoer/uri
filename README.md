@@ -74,7 +74,7 @@ u.str(); //http://example.com?company=ex;
 
 
 ## Release
-
+- 0.1.6  `2016-01-07`  Polyfill Object.assign
 - 0.1.5  `2016-01-06` remove extend dependency and update document.
 - 0.1.4  `2016-01-05` 1. change api `params` to `setParams` 2. params use to get query params;
 - 0.1.3  `2016-01-04`  bugfix module problem
