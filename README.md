@@ -37,6 +37,15 @@ u.setParams({'name': 'mary'}).str() //http://example.com?name=mary
 u.setParams({ 'email': 'test@example.com', 'sex': 'female' }).str(); // http://example.com?name=mary&email=test@example.com&sex=female
 ```
 
+### removeParams(Array keys)
+
+移除参数
+
+```
+let u = new Uri("http://example.com/api?a=1&b=2&c=3&d=4");
+u.removeParams(['a', 'c']).str(); //http://example.com/api?b=2&d=4
+```
+
 
 ### path(String pathname)
 
