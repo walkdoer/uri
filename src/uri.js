@@ -95,6 +95,12 @@ module.exports = class Uri {
         return this;
     }
 
+    removeParams(keys = []) {
+        for (var i = 0; i < keys.length; i++) {
+            delete this.params[keys[i]];
+        }
+    }
+
     str() {
         var uri = `${this.protocol}://${this.host}${this.port ? ':' + this.port : ''}${this.pathname}`;
         uri = addParams(uri, Object.assign({}, globalParams, this.params));

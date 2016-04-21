@@ -74,7 +74,15 @@
         <span class="result params_path"></span>
 
 
-        <h3>params + path</h3>
+        <h3>removeParams</h3>
+         <pre><code>
+            let u = new Uri("http://example.com/api?a=1&b=2&c=3&d=4");
+            u.removeParams(['a', 'c']).str();
+        </code></pre>
+        <span class="result params_remove"></span>
+
+
+        <h3>Uri.config</h3>
         <pre><code>
         Uri.config({
             params: {

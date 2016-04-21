@@ -49,6 +49,11 @@ $('.params_path').innerText = u3.str();
 console.log(u3);
 
 
+let u5 = new Uri("http://example.com/api?a=1&b=2&c=3&d=4");
+u5.removeParams(['a', 'c']);
+$('.params_remove').innerText = u5.str();
+
+
 //Config global params
 Uri.config({
     params: {
