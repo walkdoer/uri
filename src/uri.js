@@ -99,6 +99,7 @@ module.exports = class Uri {
         for (var i = 0; i < keys.length; i++) {
             delete this.params[keys[i]];
         }
+        return this;
     }
 
     str() {
